@@ -17,3 +17,6 @@ config :showme, Showme.Repo,
   database: "showme_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
+
+# Reduce hash number of rounds, performance friendy
+config :bcrypt_elixir, :log_rounds, 4
