@@ -11,10 +11,11 @@ defmodule Showme.User do
     timestamps()
   end
 
-  def changeset(model, params \\ :invalid) do
+  def changeset(model, params \\ %{}) do
     model
     |> cast(params, [:name, :username], [])
     |> validate_length(:username, min: 1, max: 20)
+    |> unique_constraint(:username)
   end
 
   def registration_changeset(model, params) do

@@ -6,9 +6,10 @@ defmodule Showme.Repo.Migrations.CreateUser do
       add :name, :string
       add :username, :string, null: false
       add :password_hash, :string
-      timestamps
+
+      timestamps()
     end
-    
+
       create unique_index(:users, [:username])
     end
 end
