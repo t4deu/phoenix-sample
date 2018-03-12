@@ -37,6 +37,7 @@ defmodule Showme.Web do
 
       import Showme.Router.Helpers
       import Showme.Gettext
+      import Showme.Auth, only: [authenticate_user: 2]
     end
   end
 
@@ -59,6 +60,8 @@ defmodule Showme.Web do
   def router do
     quote do
       use Phoenix.Router
+
+      import Showme.Auth, only: [authenticate_user: 2]
     end
   end
 
