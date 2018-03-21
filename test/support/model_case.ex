@@ -22,6 +22,7 @@ defmodule Showme.ModelCase do
       import Ecto.Changeset
       import Ecto.Query
       import Showme.ModelCase
+      import Showme.TestUtils
     end
   end
 
@@ -52,6 +53,11 @@ defmodule Showme.ModelCase do
   """
   def errors_on(struct, data) do
     struct.__struct__.changeset(struct, data)
+    |> errors_on()
+  end
+
+  def errors_on(changeset) do
+    changeset
     |> Ecto.Changeset.traverse_errors(&Showme.ErrorHelpers.translate_error/1)
     |> Enum.flat_map(fn {key, errors} -> for msg <- errors, do: {key, msg} end)
   end

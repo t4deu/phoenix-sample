@@ -26,6 +26,7 @@ defmodule Showme.ConnCase do
       import Ecto.Query
 
       import Showme.Router.Helpers
+      import Showme.TestUtils
 
       # The default endpoint for testing
       @endpoint Showme.Endpoint
